@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      render json: user
+      render json: UserSerializer.new(user), status: 200
     else
       resp = {
         :error => @user.errors.full_messages.to_sentence
